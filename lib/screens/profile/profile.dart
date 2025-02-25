@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:videshi/screens/profile/widgets/edit_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -8,7 +10,6 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {},
@@ -17,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
           'Profile',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -28,7 +29,12 @@ class ProfileScreen extends StatelessWidget {
         children: [
           _buildSectionHeader('Account'),
           _buildMenuGroup([
-            _buildMenuItem(Icons.person_outline, 'Edit profile'),
+            GestureDetector(
+              onTap: () {
+                Get.to(() => EditProfileScreen());
+              },
+              child: _buildMenuItem(Icons.person_outline, 'Edit profile'),
+            ),
             _buildMenuItem(Icons.security_outlined, 'security'),
             _buildMenuItem(Icons.notifications_none, 'Notifications'),
             _buildMenuItem(Icons.lock_outline, 'Privacy'),
