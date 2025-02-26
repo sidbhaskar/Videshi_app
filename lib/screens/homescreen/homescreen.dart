@@ -46,7 +46,11 @@ class HomePagescreen extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Image.asset('assets/images/logo/hero.png', fit: BoxFit.cover),
+                  Image.asset(
+                    'assets/images/logo/hero.png',
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                   ClipPath(
                     clipper: DiagonalClipper(),
                     child: Container(color: Colors.white),

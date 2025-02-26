@@ -72,8 +72,8 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomePagescreen(),
-    const ScholarshipScreen(),
-    const ReviewScreen(),
+    const ScholarshipsScreen(),
+    const ReviewsScreen(),
     const ProfileScreen(),
   ];
 }
