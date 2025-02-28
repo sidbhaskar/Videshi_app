@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScholarshipDetailsScreen extends StatelessWidget {
-  const ScholarshipDetailsScreen({Key? key}) : super(key: key);
+  const ScholarshipDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

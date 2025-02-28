@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:videshi/utils/constants/constant_data.dart';
+
+import '../../common/agent_details.dart';
+import 'widgets/university/alluniversity.dart';
 
 class HomePagescreen extends StatelessWidget {
   const HomePagescreen({super.key});
@@ -215,10 +220,26 @@ class HomePagescreen extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:
-                          agentData.map((agent) => AgentCard(agent)).toList(),
+                    SizedBox(
+                      height: 240,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: agentData.length,
+                        itemBuilder: (context, index) {
+                          final agent = agentData[index];
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(() => AgentProfileScreen());
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              child: AgentCard(agent),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -237,7 +258,12 @@ class HomePagescreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Icon(Icons.arrow_forward, size: 30),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => AlluniversityScreen());
+                      },
+                      child: Icon(Icons.arrow_forward, size: 30),
+                    ),
                   ],
                 ),
               ),
@@ -252,11 +278,16 @@ class HomePagescreen extends StatelessWidget {
                     separatorBuilder:
                         (context, index) => const SizedBox(width: 20),
                     itemBuilder: (context, index) {
-                      return UniversityCards(
-                        image: universityData[index]["image"]!,
-                        name: universityData[index]["name"]!,
-                        location: universityData[index]["Location"]!,
-                        ranking: universityData[index]["ranking"]!,
+                      return GestureDetector(
+                        onTap: () {
+                          Get.to(() => AlluniversityScreen());
+                        },
+                        child: UniversityCards(
+                          image: universityData[index]["image"]!,
+                          name: universityData[index]["name"]!,
+                          location: universityData[index]["Location"]!,
+                          ranking: universityData[index]["ranking"]!,
+                        ),
                       );
                     },
                   ),
@@ -399,72 +430,84 @@ class AgentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 6,
-              spreadRadius: 1,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.asset(
-                agent["image"]!,
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              agent["name"]!,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Colors.black,
-              ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              "Specialization:\n${agent["specialization"]!}",
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: Colors.black54,
-              ),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF0F2851),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 8,
-                ),
-              ),
-              onPressed: () {},
-              child: const Text(
-                "See",
-                style: TextStyle(color: Colors.white, fontSize: 14),
-              ),
-            ),
-          ],
-        ),
+    return Container(
+      width: 180, // Increased width for better layout
+      height: 230, // Fixed height for consistency
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 6,
+            spreadRadius: 1,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildProfileImage(),
+          const SizedBox(height: 10),
+          _buildName(),
+          const SizedBox(height: 5),
+          _buildSpecialization(),
+          const Spacer(),
+          _buildSeeButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProfileImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(50),
+      child: Image.asset(
+        agent["image"]!,
+        width: 90,
+        height: 90,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget _buildName() {
+    return Text(
+      agent["name"]!,
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        color: Colors.black,
+      ),
+    );
+  }
+
+  Widget _buildSpecialization() {
+    return Text(
+      "Specialization:\n${agent["specialization"]!}",
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: Colors.black54,
+      ),
+    );
+  }
+
+  Widget _buildSeeButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF0F2851),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      ),
+      onPressed: () {},
+      child: const Text(
+        "See",
+        style: TextStyle(color: Colors.white, fontSize: 14),
       ),
     );
   }

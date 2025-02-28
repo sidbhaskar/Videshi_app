@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:videshi/screens/scholarship/widgets/scholarship_details.dart';
 
 class ScholarshipsScreen extends StatelessWidget {
-  const ScholarshipsScreen({Key? key}) : super(key: key);
+  const ScholarshipsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -140,12 +140,12 @@ class ScholarshipCard extends StatelessWidget {
   final String dueDate;
 
   const ScholarshipCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.amount,
     required this.description,
     required this.dueDate,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
