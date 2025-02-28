@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../agent chat screen/agent_chat.dart';
+
 class AgentHome extends StatelessWidget {
   const AgentHome({Key? key}) : super(key: key);
 
@@ -146,13 +148,22 @@ class AgentHome extends StatelessWidget {
                       trailingColor: Colors.orange,
                     ),
                     const Divider(height: 1),
-                    _buildTaskItem(
-                      icon: Icons.chat_bubble_outline,
-                      title: 'Chat with Clients',
-                      subtitle:
-                          'Messages & Inquiries - Respond to student queries',
-                      trailing: '2 New Messages',
-                      trailingColor: Colors.green,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChatList(),
+                            ));
+                      },
+                      child: _buildTaskItem(
+                        icon: Icons.chat_bubble_outline,
+                        title: 'Chat with Clients',
+                        subtitle:
+                            'Messages & Inquiries - Respond to student queries',
+                        trailing: '2 New Messages',
+                        trailingColor: Colors.green,
+                      ),
                     ),
                     const Divider(height: 1),
                     _buildTaskItem(

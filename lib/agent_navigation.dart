@@ -5,6 +5,7 @@ import 'package:flutter_lucide/flutter_lucide.dart';
 
 import 'screens/agent homescreen/agent_home.dart';
 import 'screens/application screen/application_screen.dart';
+import 'screens/task screen agent/task_screen_agent.dart';
 
 class AgentNavigation extends StatelessWidget {
   const AgentNavigation({super.key});
@@ -69,7 +70,11 @@ class AgentNavigation extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
-  final screens = [const AgentHome(), const ApplicationScreen()];
+  final screens = [
+    const AgentHome(),
+    const ApplicationScreen(),
+    const TaskManagerScreen()
+  ];
 }
 
 class NavItem extends StatelessWidget {
