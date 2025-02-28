@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:videshi/utils/constants/constant_data.dart';
 
 import '../../common/agent_details.dart';
@@ -60,7 +59,6 @@ class HomePagescreen extends StatelessWidget {
                     clipper: DiagonalClipper(),
                     child: Container(color: Colors.white),
                   ),
-
                   Positioned(
                     top: 70,
                     left: 30,
@@ -91,7 +89,6 @@ class HomePagescreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 30),
-
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
@@ -275,8 +272,8 @@ class HomePagescreen extends StatelessWidget {
                   child: ListView.separated(
                     itemCount: universityData.length,
                     scrollDirection: Axis.horizontal,
-                    separatorBuilder:
-                        (context, index) => const SizedBox(width: 20),
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 20),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -352,7 +349,6 @@ class UniversityCards extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-
                 Row(
                   children: [
                     const Text(
@@ -373,7 +369,6 @@ class UniversityCards extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 Row(
                   children: [
                     const Text(
@@ -394,7 +389,6 @@ class UniversityCards extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
