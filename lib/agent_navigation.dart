@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-import 'package:videshi/screens/homescreen/homescreen.dart';
-import 'package:videshi/screens/profile/profile.dart';
-import 'package:videshi/screens/review/review.dart';
-import 'package:videshi/screens/scholarship/scholarship.dart';
 
-class NavigationScreen extends StatelessWidget {
-  const NavigationScreen({super.key});
+import 'screens/agent homescreen/agent_home.dart';
+import 'screens/application screen/application_screen.dart';
+import 'screens/task screen agent/task_screen_agent.dart';
+
+class AgentNavigation extends StatelessWidget {
+  const AgentNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +39,15 @@ class NavigationScreen extends StatelessWidget {
                   onTap: () => controller.selectedIndex.value = 0,
                 ),
                 NavItem(
-                  icon: FontAwesomeIcons.graduationCap,
-                  label: 'Scholarship',
+                  icon: FontAwesomeIcons.folder,
+                  label: 'Applications',
                   isSelected: controller.selectedIndex.value == 1,
                   onTap: () => controller.selectedIndex.value = 1,
                 ),
                 const SizedBox(width: 40),
                 NavItem(
                   icon: LucideIcons.message_square,
-                  label: 'Reviews',
+                  label: 'Tasks',
                   isSelected: controller.selectedIndex.value == 2,
                   onTap: () => controller.selectedIndex.value = 2,
                 ),
@@ -71,10 +71,9 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [
-    const HomePagescreen(),
-    const ScholarshipsScreen(),
-    const ReviewsScreen(),
-    const ProfileScreen(),
+    const AgentHome(),
+    const ApplicationScreen(),
+    const TaskManagerScreen()
   ];
 }
 

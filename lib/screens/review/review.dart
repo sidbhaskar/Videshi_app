@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:videshi/screens/review/widgets/review_details.dart';
 
 class ReviewsScreen extends StatelessWidget {
-  const ReviewsScreen({Key? key}) : super(key: key);
+  const ReviewsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class ReviewCard extends StatelessWidget {
   final int voteCount;
 
   const ReviewCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.timeAgo,
     required this.rating,
@@ -105,7 +105,7 @@ class ReviewCard extends StatelessWidget {
     required this.profession,
     required this.imageUrl,
     required this.voteCount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -182,15 +182,15 @@ class ReviewCard extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {},
-              child: Text(
-                'See More',
-                style: TextStyle(color: Colors.blue[800], fontSize: 12),
-              ),
               style: TextButton.styleFrom(
                 padding: EdgeInsets.zero,
                 minimumSize: const Size(50, 20),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 alignment: Alignment.centerLeft,
+              ),
+              child: Text(
+                'See More',
+                style: TextStyle(color: Colors.blue[800], fontSize: 12),
               ),
             ),
             const SizedBox(height: 12),

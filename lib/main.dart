@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:videshi/navigation.dart';
+import 'package:videshi/screens/splash%20screen/splash_screen.dart';
 import 'package:videshi/utils/theme/theme.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: VAppTheme.lightTheme,
-      home: const NavigationScreen(),
+      home: SplashScreen(),
     );
   }
 }

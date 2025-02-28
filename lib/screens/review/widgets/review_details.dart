@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ReviewDetails extends StatefulWidget {
-  const ReviewDetails({Key? key}) : super(key: key);
+  const ReviewDetails({super.key});
 
   @override
   State<ReviewDetails> createState() => _ReviewDetailsState();
@@ -281,22 +281,20 @@ class _ReviewDetailsState extends State<ReviewDetails> {
                       ),
                       child: const Icon(Icons.camera_alt, color: Colors.grey),
                     ),
-                    ...uploadedPhotos
-                        .map(
-                          (photo) => Container(
-                            width: 80,
-                            height: 80,
-                            margin: const EdgeInsets.only(right: 8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              image: DecorationImage(
-                                image: AssetImage(photo),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                    ...uploadedPhotos.map(
+                      (photo) => Container(
+                        width: 80,
+                        height: 80,
+                        margin: const EdgeInsets.only(right: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          image: DecorationImage(
+                            image: AssetImage(photo),
+                            fit: BoxFit.cover,
                           ),
-                        )
-                        .toList(),
+                        ),
+                      ),
+                    ),
                     Container(
                       width: 80,
                       height: 80,
